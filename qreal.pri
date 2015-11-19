@@ -14,12 +14,13 @@
 
 contains(QT_VERSION, ^4\\.[0-5]\\..*){
 	message("Cannot build qreal using Qt version $${QT_VERSION}")
-	error("Use at least Qt 4.6")
+	error("Use at least Qt 5.5")
 }
 
 TEMPLATE = subdirs
 SUBDIRS = \
 	qrmc \
+	qrmc-bin \
 	qrxc \
 	qrgui \
 	qrrepo \
@@ -36,6 +37,8 @@ qrrepo.depends = qrkernel qrutils
 qrxc.depends = qrutils
 qrmc.depends = qrrepo
 qrmc.file = $$PWD/qrmc/qrmc-lib.pro
+qrmc-bin.depends = qrrepo
+qrmc-bin.file = $$PWD/qrmc/qrmc-bin.pro
 
 qrgui.depends = \
 	qrxc \
