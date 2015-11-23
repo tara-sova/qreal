@@ -24,17 +24,21 @@ isEmpty(ROOT) {
 
 win32 {
 	QRXC = $$DESTDIR/qrxc$${CONFIGURATION_SUFFIX}.exe
+	QRMC = $$DESTDIR/qrmc$${CONFIGURATION_SUFFIX}.exe
 }
 
 unix:!macx {
 	QRXC = $$DESTDIR/qrxc$$CONFIGURATION_SUFFIX
+	QRMC = $$DESTDIR/qrmc$$CONFIGURATION_SUFFIX
 }
 
 macx {
 	QRXC = $$DESTDIR/qrxc$${CONFIGURATION_SUFFIX}.app/Contents/MacOS/qrxc$$CONFIGURATION_SUFFIX
+	QRMC = $$DESTDIR/qrmc$${CONFIGURATION_SUFFIX}.app/Contents/MacOS/qrmc$$CONFIGURATION_SUFFIX
 }
 
 QRXC_DIR = $$DESTDIR
+QRMC_DIR = $$DESTDIR
 DESTDIR = $$DESTDIR/plugins/editors/
 
 # Needed because somehow QMake fails to create .rcc directory if RESOURCES is in extra compiler output.
@@ -51,5 +55,6 @@ if (equals(QMAKE_CXX, "g++")) {
 }
 
 include(extraCompilers.pri)
+include(extraCompilersQrmc.pri)
 
 include(editorsSdk.pri)
